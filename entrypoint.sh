@@ -12,7 +12,7 @@ if [ "$(id -u)" == "0" ]; then
     if [[ -d /home/jenkins/.m2 ]] && [[ "$(stat -c %u /home/jenkins/.m2)" != "$(id -u jenkins)" ]]; then
         chown -R jenkins /home/jenkins/.m2
     fi
-    ## If we want to share maven cache between slaves
+    ## If we want to share gradle cache between slaves
     if [[ -d /home/jenkins/.gradle ]] && [[ "$(stat -c %u /home/jenkins/.gradle)" != "$(id -u jenkins)" ]]; then
         chown -R jenkins /home/jenkins/.gradle
     fi
