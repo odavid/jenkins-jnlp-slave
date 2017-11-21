@@ -4,7 +4,7 @@ ARG DOCKER_VERSION=17.09.0-ce
 
 USER root
 
-RUN apk add --no-cache curl && \
+RUN apk add --no-cache curl shadow && \
     curl -SsLo /usr/bin/gosu https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64 && \
     chmod +x /usr/bin/gosu
 
