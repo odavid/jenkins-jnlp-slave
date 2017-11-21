@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$(id -u)" == "0" ]; then
-    chown -R jenkins:jenkins /home/jenkins
+    chown -R jenkins /home/jenkins
     # To enable docker cloud based on docker socket,
     # we need to add jenkins user to the docker group
     if [ -S /var/run/docker.sock ]; then
