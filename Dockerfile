@@ -1,4 +1,4 @@
-FROM jenkinsci/jnlp-slave:3.14-1-alpine
+FROM jenkins/jnlp-slave:3.14-1-alpine
 ARG GOSU_VERSION=1.10
 ARG DOCKER_VERSION=17.09.0-ce
 
@@ -33,7 +33,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
     rm \
         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" 
+        "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 ENV LANG=en_US.UTF-8
 
 RUN apk add --no-cache curl shadow && \
@@ -41,10 +41,10 @@ RUN apk add --no-cache curl shadow && \
     chmod +x /usr/bin/gosu
 
 RUN curl -SsLo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz && \
-    tar -xzf /tmp/docker.tar.gz -C /tmp && \ 
+    tar -xzf /tmp/docker.tar.gz -C /tmp && \
     mv /tmp/docker/docker /usr/bin/docker && \
     rm -rf /tmp/docker /tmp/docker.tar.gz
-    
+
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
