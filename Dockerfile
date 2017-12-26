@@ -1,7 +1,7 @@
 FROM jenkins/jnlp-slave:3.14-1-alpine
 ARG GOSU_VERSION=1.10
 ARG DOCKER_VERSION=17.09.0-ce
-
+ARG TINY_VERSION=0.16.1
 USER root
 
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
@@ -37,7 +37,10 @@ ENV LANG=en_US.UTF-8
 
 RUN apk add --no-cache curl shadow && \
     curl -SsLo /usr/bin/gosu https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64 && \
-    chmod +x /usr/bin/gosu
+    chmod +x /usr/bin/gosu && \
+    curl -SsLo /usr/bin/tiny https://github.com/krallin/tini/releases/download/v${TINY_VERSION}/tini-amd64 && \
+    chmod +x /usr/bin/tiny
+    
 
 RUN curl -SsLo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz && \
     tar -xzf /tmp/docker.tar.gz -C /tmp && \
@@ -46,4 +49,4 @@ RUN curl -SsLo /tmp/docker.tar.gz https://download.docker.com/linux/static/stabl
 
 COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "tiny", "--", "/entrypoint.sh" ]
