@@ -6,8 +6,8 @@ if [ "$(id -u)" == "0" ]; then
     if [ -S /var/run/docker.sock ]; then
         DOCKER_SOCKET_OWNER_GROUP_ID=$(stat -c %g /var/run/docker.sock)
         echo "jenkins groups: $(id jenkins -G)"
-        getent group $DOCKER_SOCKET_OWNER_GROUP_ID || groupadd -g $DOCKER_SOCKET_OWNER_GROUP_ID docker
-        id jenkins -G | grep $DOCKER_SOCKET_OWNER_GROUP_ID || usermod -a -G $DOCKER_SOCKET_OWNER_GROUP_ID jenkins
+        groupadd -for -g ${DOCKER_SOCKET_OWNER_GROUP_ID} docker
+        id jenkins -G -n | grep docker || usermod -aG docker jenkins
         echo "jenkins new groups: $(id jenkins -G)"
     fi
 
