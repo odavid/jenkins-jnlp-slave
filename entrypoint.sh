@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e -o pipefail
 if [ "$(id -u)" == "0" ]; then
     # To enable docker cloud based on docker socket,
     # we need to add jenkins user to the docker group
