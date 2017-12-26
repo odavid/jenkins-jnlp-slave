@@ -1,4 +1,4 @@
-FROM jenkins/jnlp-slave:3.14-1-alpine
+FROM jenkins/jnlp-slave:3.15-1-alpine
 ARG GOSU_VERSION=1.10
 ARG DOCKER_VERSION=17.09.0-ce
 ARG TINY_VERSION=0.16.1
