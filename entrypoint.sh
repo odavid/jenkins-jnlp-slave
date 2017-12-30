@@ -20,7 +20,9 @@ if [ "$(id -u)" == "0" ]; then
     )
     for d in ${dirs[@]}; do
         if [[ -d $d ]] && [[ "$(stat -c %u $d)" != "$(id -u jenkins)" ]]; then
+            echo "chown -R jenkins $d"
             chown -R jenkins $d
+            echo "chown -R jenkins $d... Done"
         fi
     done
 fi
