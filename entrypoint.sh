@@ -9,22 +9,26 @@ if [ "$(id -u)" == "0" ]; then
         id jenkins -G -n | grep docker || usermod -aG docker jenkins
     fi
 
-    # dirs=(
-    #     '/home/jenkins/tools'
-    #     '/home/jenkins/.m2'
-    #     '/home/jenkins/.gradle'
-    #     '/home/jenkins/.coursier'
-    #     '/home/jenkins/.ivy'
-    #     '/home/jenkins/.sbt'
-    #     '/home/jenkins'
-    # )
-    # for d in ${dirs[@]}; do
-    #     if [[ -d $d ]] && [[ "$(stat -c %u $d)" != "$(id -u jenkins)" ]]; then
-    #         echo "chown -R jenkins $d"
-    #         chown -R jenkins $d
-    #         echo "chown -R jenkins $d... Done"
-    #     fi
-    # done
+    dirs=(
+        '/home/jenkins/tools'
+        '/home/jenkins/.m2'
+        '/home/jenkins/.gradle'
+        '/home/jenkins/.gradle/caches'
+        '/home/jenkins/.gradle/caches/modules-2'
+        '/home/jenkins/.gradle/native'
+        '/home/jenkins/.gradle/wrapper'
+        '/home/jenkins/.coursier'
+        '/home/jenkins/.ivy'
+        '/home/jenkins/.sbt'
+        '/home/jenkins'
+    )
+    for d in ${dirs[@]}; do
+        if [[ -d $d ]] && [[ "$(stat -c %u $d)" != "$(id -u jenkins)" ]]; then
+            echo "chown jenkins:jenkins $d"
+            chown jenkins:jenkins $d
+            echo "chown jenkins:jenkins $d... Done"
+        fi
+    done
 fi
 
 exec gosu jenkins "jenkins-slave" "$@"
