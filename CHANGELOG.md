@@ -1,5 +1,8 @@
 ## Changelog
 
+### v3.16-1-alpine-8
+* Updated jenkinsci/jnlp-slave:3.16-1-alpine
+
 ### v3.15-1-alpine-7
 * Updated jenkinsci/jnlp-slave:3.15-1-alpine
 * Access to docker socket
