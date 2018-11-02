@@ -1,5 +1,8 @@
 ## Changelog
 
+### v3.27-1-alpine-9
+* Updated jenkinsci/jnlp-slave:3.27-1-alpine
+
 ### v3.16-1-alpine-8
 * Updated jenkinsci/jnlp-slave:3.16-1-alpine
 
