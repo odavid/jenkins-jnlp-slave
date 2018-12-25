@@ -52,7 +52,8 @@ RUN apk add --no-cache curl shadow && \
 RUN curl -SsLo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz && \
     tar -xzf /tmp/docker.tar.gz -C /tmp && \
     mv /tmp/docker/docker /usr/bin/docker && \
-    rm -rf /tmp/docker /tmp/docker.tar.gz
+    rm -rf /tmp/docker /tmp/docker.tar.gz && \
+    /env/bin/pip install docker-compose
 
 COPY entrypoint.sh /entrypoint.sh
 
