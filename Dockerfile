@@ -42,7 +42,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 ENV LANG=en_US.UTF-8
 
-RUN apk add --no-cache curl shadow && \
+RUN apk add --no-cache curl shadow py-pip && \
     curl -SsLo /usr/bin/gosu https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64 && \
     chmod +x /usr/bin/gosu && \
     curl -SsLo /usr/bin/tiny https://github.com/krallin/tini/releases/download/v${TINY_VERSION}/tini-amd64 && \
@@ -53,7 +53,7 @@ RUN curl -SsLo /tmp/docker.tar.gz https://download.docker.com/linux/static/stabl
     tar -xzf /tmp/docker.tar.gz -C /tmp && \
     mv /tmp/docker/docker /usr/bin/docker && \
     rm -rf /tmp/docker /tmp/docker.tar.gz && \
-    /usr/bin/pip install docker-compose
+    /usr/bin/pip install  --upgrade pip docker-compose
 
 COPY entrypoint.sh /entrypoint.sh
 
