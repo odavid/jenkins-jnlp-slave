@@ -53,7 +53,7 @@ RUN curl -SsLo /tmp/docker.tar.gz https://download.docker.com/linux/static/stabl
     tar -xzf /tmp/docker.tar.gz -C /tmp && \
     mv /tmp/docker/docker /usr/bin/docker && \
     rm -rf /tmp/docker /tmp/docker.tar.gz && \
-    /env/bin/pip install docker-compose
+    /usr/bin/pip install docker-compose
 
 COPY entrypoint.sh /entrypoint.sh
 
