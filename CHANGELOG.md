@@ -1,5 +1,8 @@
 ## Changelog
 
+### v3.27-1-alpine-10
+* Add docker-compose - [#3](https://github.com/odavid/jenkins-jnlp-slave/pull/3)
+
 ### v3.27-1-alpine-9
 * Updated jenkinsci/jnlp-slave:3.27-1-alpine
 
