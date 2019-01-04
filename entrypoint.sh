@@ -1,5 +1,13 @@
 #!/bin/bash
 set -e -o pipefail
+
+## Run wrapdocker if DIND=true
+if [ "$DIND" == "true" ]; then
+    echo "DIND=true, running wrapdocker $0 \"$@\""
+    unset DIND
+    exec wrapdocker $0 "$@"
+fi
+
 if [ "$(id -u)" == "0" ]; then
     # To enable docker cloud based on docker socket,
     # we need to add jenkins user to the docker group

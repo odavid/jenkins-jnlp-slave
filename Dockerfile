@@ -1,7 +1,9 @@
 FROM jenkins/jnlp-slave:3.27-1-alpine
 ARG GOSU_VERSION=1.10
+ARG DOCKER_CHANNEL=stable
 ARG DOCKER_VERSION=18.06.1-ce
 ARG TINY_VERSION=0.16.1
+
 USER root
 
 RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" && \
@@ -49,12 +51,19 @@ RUN apk add --no-cache curl shadow py-pip && \
     chmod +x /usr/bin/tiny
 
 
-RUN curl -SsLo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz && \
-    tar -xzf /tmp/docker.tar.gz -C /tmp && \
-    mv /tmp/docker/docker /usr/bin/docker && \
-    rm -rf /tmp/docker /tmp/docker.tar.gz && \
-    /usr/bin/pip install  --upgrade pip docker-compose
+RUN \
+    apk add --no-cache iptables && \
+    \
+    curl -Ssl "https://download.docker.com/linux/static/${DOCKER_CHANNEL}/x86_64/docker-${DOCKER_VERSION}.tgz" | \
+    tar -xz  --strip-components 1 --directory /usr/bin/  && \
+    \
+    /usr/bin/pip install --no-cache-dir --upgrade pip docker-compose
 
 COPY entrypoint.sh /entrypoint.sh
+
+## https://github.com/docker-library/docker/blob/fe2ca76a21fdc02cbb4974246696ee1b4a7839dd/18.06/modprobe.sh
+COPY modprobe.sh /usr/local/bin/modprobe
+## https://github.com/jpetazzo/dind/blob/72af271b1af90f6e2a4c299baa53057f76df2fe0/wrapdocker
+COPY wrapdocker.sh /usr/local/bin/wrapdocker
 
 ENTRYPOINT [ "tiny", "--", "/entrypoint.sh" ]
