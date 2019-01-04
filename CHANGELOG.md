@@ -1,5 +1,8 @@
 ## Changelog
 
+### v3.27-1-alpine-11
+* Support for DIND - [#5](https://github.com/odavid/jenkins-jnlp-slave/pull/5)
+
 ### v3.27-1-alpine-10
 * Add docker-compose - [#3](https://github.com/odavid/jenkins-jnlp-slave/pull/3)
 
