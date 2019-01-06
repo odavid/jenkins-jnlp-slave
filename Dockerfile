@@ -66,4 +66,6 @@ COPY modprobe.sh /usr/local/bin/modprobe
 ## https://github.com/jpetazzo/dind/blob/72af271b1af90f6e2a4c299baa53057f76df2fe0/wrapdocker
 COPY wrapdocker.sh /usr/local/bin/wrapdocker
 
+VOLUME /var/lib/docker
+
 ENTRYPOINT [ "tiny", "--", "/entrypoint.sh" ]
