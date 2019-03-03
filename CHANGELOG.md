@@ -1,5 +1,8 @@
 ## Changelog
 
+### v3.27-1-alpine-13
+* Added libstdc++ to fix glibc issues when using nodejs and other libs [#6](https://github.com/odavid/jenkins-jnlp-slave/pull/6)
+
 ### v3.27-1-alpine-11
 * Support for DIND - [#5](https://github.com/odavid/jenkins-jnlp-slave/pull/5)
 
