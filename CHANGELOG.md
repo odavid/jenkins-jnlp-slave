@@ -1,5 +1,10 @@
 ## Changelog
 
+### v3.29-1-14 (Not released yet)
+* Support both debian and alpine [#7](https://github.com/odavid/jenkins-jnlp-slave/pull/7)
+  * Changing tag scheme from `v$UPSTREAM_TAG-alpine-$INCREMENT` to `v$UPSTREAM_TAG-$INCREMENT[-$DISTRIBUTION]` (currently alpine and debian)
+* Using [3.29-1 jenkins/jnlp-slave](https://hub.docker.com/r/jenkins/jnlp-slave/tags) as base image
+
 ### v3.27-1-alpine-13
 * Added libstdc++ to fix glibc issues when using nodejs and other libs [#6](https://github.com/odavid/jenkins-jnlp-slave/pull/6)
 

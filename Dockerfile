@@ -119,24 +119,19 @@ RUN \
     if [ -f /etc/alpine-release ] ; then \
         apk add --no-cache python3 \
         \
-        && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
-        && if [ ! -e /usr/bin/python ]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
-        \
         && apk add --no-cache --virtual .build-deps \
             python3-dev libffi-dev openssl-dev gcc libc-dev make \
-        && pip install --upgrade pip \
-        && pip install --upgrade docker-compose \
+        && pip3 install --upgrade --no-cache-dir pip \
+        && pip3 install --upgrade --no-cache-dir docker-compose \
         && apk del .build-deps \
         ; \
     elif [ -f /etc/debian_version ] ; then \
         buildDeps="python3-dev libffi-dev gcc make" \
         && apt-get update \
         && apt-get install -y --no-install-recommends python3 python3-pip python3-setuptools \
-        && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
-        && if [ ! -e /usr/bin/python ]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
         \
         && apt-get install -y --no-install-recommends $buildDeps \
-        && pip install --upgrade docker-compose \
+        && pip3 install --upgrade --no-cache-dir docker-compose \
         && apt-get purge -y --auto-remove \
                   -o APT::AutoRemove::RecommendsImportant=false \
                   $buildDeps \

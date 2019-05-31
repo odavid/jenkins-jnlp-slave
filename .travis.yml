@@ -17,16 +17,14 @@ jobs:
       script: echo "publishing...."
       deploy:
         - provider: script
-          script: |
-            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && \
-            make publish-latest
+          script: >
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && make publish-latest
           on:
             branch: master
 
         - provider: script
-          script: |
-            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && \
-            make publish-tag -e TAG="${TRAVIS_TAG/v/}"
+          script: >
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && make publish-tag -e TAG="${TRAVIS_TAG/v/}"
           on:
             tags: true
             condition: $TRAVIS_TAG =~ ^v.*$
