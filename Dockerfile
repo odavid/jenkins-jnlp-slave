@@ -10,7 +10,7 @@ ARG TINY_VERSION=0.16.1
 ##########################################
 # Alpine GLIBC ONLY
 ARG ALPINE_GLIBC_PACKAGE_VERSION=2.29-r0
-ARG GCC_LIBS=gcc-libs-9.1.0-1-x86_64.pkg.tar.xz
+ARG GCC_LIBS=gcc-libs-8.3.0-1-x86_64.pkg.tar.xz
 ARG GCC_LIBS_URL=https://archive.archlinux.org/packages/g/gcc-libs/${GCC_LIBS}
 ARG ZLIB_URL_ENCODED="zlib-1%3A1.2.11-3-x86_64.pkg.tar.xz"
 ARG ZLIB="zlib-1:1.2.11-3-x86_64.pkg.tar.xz"
