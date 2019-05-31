@@ -17,7 +17,9 @@ jobs:
       script: echo "publishing...."
       deploy:
         - provider: script
-          script: make publish-latest
+          script: |
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin && \
+            make publish-latest
           on:
             branch: master
 
