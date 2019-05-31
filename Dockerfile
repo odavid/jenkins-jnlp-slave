@@ -104,8 +104,13 @@ RUN \
     echo "Installing docker-compose" \
     ; \
     if [ -f /etc/alpine-release ] ; then \
-        apk add --no-cache --virtual .build-deps \
-            python-dev libffi-dev openssl-dev gcc libc-dev make  py-pip \
+        apk add --no-cache python3 \
+        \
+        && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
+        && if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
+        \
+        && apk add --no-cache --virtual .build-deps \
+            python3-dev libffi-dev openssl-dev gcc libc-dev make \
         && pip install --upgrade pip \
         && pip install --upgrade docker-compose \
         && apk del .build-deps \
