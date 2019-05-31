@@ -74,7 +74,11 @@ RUN \
         && rm -rf /tmp/${GLIBC_VER}.apk /tmp/gcc /tmp/${ZLIB} /tmp/libz /tmp/${GCC_LIBS} /var/cache/apk/* \
         ; \
     elif [ -f /etc/debian_version ] ; then \
-        echo "Debian, skipping glib installation" \
+        echo "Debian, setting locales" \
+        && apt-get update \
+        && apt-get install -y --no-install-recommends locales \
+        && localedef  -i en_US -f UTF-8 en_US.UTF-8 \
+        && rm -rf /var/lib/apt/lists/* \
         ; \
     fi
 
@@ -116,7 +120,7 @@ RUN \
         apk add --no-cache python3 \
         \
         && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
-        && if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
+        && if [ ! -e /usr/bin/python ]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
         \
         && apk add --no-cache --virtual .build-deps \
             python3-dev libffi-dev openssl-dev gcc libc-dev make \
@@ -125,8 +129,17 @@ RUN \
         && apk del .build-deps \
         ; \
     elif [ -f /etc/debian_version ] ; then \
-        apt-get update \
-        && apt-get install -y --no-install-recommends curl iptables \
+        buildDeps="python3-dev libffi-dev gcc make" \
+        && apt-get update \
+        && apt-get install -y --no-install-recommends python3 python3-pip python3-setuptools \
+        && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
+        && if [ ! -e /usr/bin/python ]; then ln -sf /usr/bin/python3 /usr/bin/python; fi \
+        \
+        && apt-get install -y --no-install-recommends $buildDeps \
+        && pip install --upgrade docker-compose \
+        && apt-get purge -y --auto-remove \
+                  -o APT::AutoRemove::RecommendsImportant=false \
+                  $buildDeps \
         && rm -rf /var/lib/apt/lists/* \
         ; \
     fi
