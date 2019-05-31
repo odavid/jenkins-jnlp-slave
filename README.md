@@ -1,5 +1,6 @@
 # Jenkins JNLP Agent Docker image
 
+[![Build Status](https://travis-ci.org/odavid/jenkins-jnlp-slave.svg?branch=master)](https://travis-ci.org/odavid/jenkins-jnlp-slave)
 [![Docker Pulls](https://img.shields.io/docker/pulls/odavid/jenkins-jnlp-slave.svg)](https://hub.docker.com/r/odavid/jenkins-jnlp-slave/)
 
 This image is based on https://github.com/jenkinsci/docker-jnlp-slave image and fixes permissions issues with volumes created by docker.
