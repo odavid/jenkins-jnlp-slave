@@ -4,7 +4,7 @@
 
 This image is based on https://github.com/jenkinsci/docker-jnlp-slave image and fixes permissions issues with volumes created by docker.
 The image also contains docker binary and able to mount /var/run/docker.sock to enable the slave to run docker commands on the slave.
-The image is based on alpine and installs also glibc to enable Oracle JDK installations. (see https://github.com/gliderlabs/docker-alpine/issues/11)
+The default tag of the image is based on alpine and installs also glibc to enable Oracle JDK installations. (see https://github.com/gliderlabs/docker-alpine/issues/11)
 
 The immage support running docker commands in slave in 2 different modes:
 
@@ -25,3 +25,19 @@ The immage support running docker commands in slave in 2 different modes:
 
 For other environment variables, see https://github.com/jenkinsci/docker-jnlp-slave
 
+## Releases
+Docker Images are pushed to [Docker Hub](https://hub.docker.com/r/odavid/jenkins-jnlp-slave/)
+
+Each release is a git tag v$UPSTREAM_VERSION-$INCREMENT where:
+
+* UPSRTEAM_VERSION is the [docker-jnlp-slave](https://github.com/jenkinsci/docker-jnlp-slave) version
+* INCREMENT is a number representing that representing the release contents (i.e docker version, bugs, etc...)
+
+For each git tag, there following tags will be created:
+* $UPSRTEAM_VERSION-$INCREMENT - one to one releationship with git tag
+* $UPSRTEAM_VERSION - latest release for that UPSRTEAM_VERSION version
+
+The following distributions are supported:
+* alpine (also the default)
+* debian
+* jdk11
