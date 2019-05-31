@@ -28,6 +28,6 @@ publish-tag: build-all
 	docker push odavid/jenkins-jnlp-slave:$(TAG)-debian
 
 release:
-	$(eval NEW_INCREMENT := $(shell expr `git describe --tags --abbrev=0 | cut -d'-' -f2` + 1))
-	echo "git tag v$(UPSTREAM_VERSION)-$(NEW_INCREMENT)"
-	echo "git push origin v$(UPSTREAM_VERSION)-$(NEW_INCREMENT)"
+	$(eval NEW_INCREMENT := $(shell expr `git describe --tags --abbrev=0 | cut -d'-' -f3` + 1))
+	git tag v$(UPSTREAM_VERSION)-$(NEW_INCREMENT)
+	git push origin v$(UPSTREAM_VERSION)-$(NEW_INCREMENT)
