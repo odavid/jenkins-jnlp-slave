@@ -40,4 +40,3 @@ For each git tag, there following tags will be created:
 The following distributions are supported:
 * alpine (also the default)
 * debian
-* jdk11
