@@ -1,5 +1,8 @@
 ## Changelog
 
+### v3.29-1-15
+* Upgrade tini, gosu and docker versions
+
 ### v3.29-1-14
 * Support both debian and alpine [#7](https://github.com/odavid/jenkins-jnlp-slave/pull/7)
   * Changing tag scheme from `v$UPSTREAM_TAG-alpine-$INCREMENT` to `v$UPSTREAM_TAG-$INCREMENT[-$DISTRIBUTION]` (currently alpine and debian)
