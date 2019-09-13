@@ -1,5 +1,8 @@
 ## Changelog
 
+### v3.29-1-16
+* Use Docker 19.03 to access GPUs [#9](https://github.com/odavid/jenkins-jnlp-slave/issues/9)
+
 ### v3.29-1-15
 * Upgrade tini, gosu and docker versions
 
