@@ -4,7 +4,7 @@ FROM jenkins/jnlp-slave:${FROM_TAG}
 
 ARG GOSU_VERSION=1.11
 ARG DOCKER_CHANNEL=stable
-ARG DOCKER_VERSION=18.09.6
+ARG DOCKER_VERSION=19.03.2
 ARG TINY_VERSION=0.18.0
 
 ##########################################
