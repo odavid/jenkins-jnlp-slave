@@ -18,12 +18,12 @@ jobs:
       script: echo "publishing...."
       deploy:
         - provider: script
-          script: travis_retry make publish
+          script: make publish
           on:
             branch: master
 
         - provider: script
-          script: travis_retry make publish
+          script: make publish
           on:
             tags: true
             condition: $TRAVIS_TAG =~ ^v.*$

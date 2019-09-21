@@ -1,5 +1,8 @@
 ## Changelog
 
+### v3.35-4-17
+* Upstream version and added jdk11 distribution [#11](https://github.com/odavid/jenkins-jnlp-slave/pull/11)
+
 ### v3.29-1-16
 * Use Docker 19.03 to access GPUs [#9](https://github.com/odavid/jenkins-jnlp-slave/issues/9)
 
