@@ -1,7 +1,8 @@
 ## Changelog
 
 ### v3.35-4-18
-* Upstream version and added jdk11 distribution [#11](https://github.com/odavid/jenkins-jnlp-slave/pull/11) - jdk11 fix
+* Upstream version and added jdk11 distribution [#11](https://github.com/odavid/jenkins-jnlp-slave/pull/11)
+  * In *v3.35-4-17*, jdk11 was actually equal to the jdk8 debian distribution
 
 ### v3.35-4-17
 * Upstream version and added jdk11 distribution [#11](https://github.com/odavid/jenkins-jnlp-slave/pull/11)
