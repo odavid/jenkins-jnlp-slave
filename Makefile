@@ -5,7 +5,7 @@ DEFAULT_BUILD_ARGS = --build-arg http_proxy=$(http_proxy) --build-arg https_prox
 
 default: build-alpine
 
-build-all: build-alpine build-debian
+build-all: build-alpine build-debian build-jdk11
 
 build-alpine:
 	docker build --rm --force-rm -t odavid/jenkins-jnlp-slave:alpine $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(UPSTREAM_VERSION)-alpine .
@@ -13,6 +13,9 @@ build-alpine:
 
 build-debian:
 	docker build --rm --force-rm -t odavid/jenkins-jnlp-slave:debian $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(UPSTREAM_VERSION) .
+
+build-jdk11:
+	docker build --rm --force-rm -t odavid/jenkins-jnlp-slave:jdk11 $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(UPSTREAM_VERSION) .
 
 publish: build-all
 	./publish.sh
