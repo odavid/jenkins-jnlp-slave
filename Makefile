@@ -15,7 +15,7 @@ build-debian:
 	docker build --rm --force-rm -t odavid/jenkins-jnlp-slave:debian $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(UPSTREAM_VERSION) .
 
 build-jdk11:
-	docker build --rm --force-rm -t odavid/jenkins-jnlp-slave:jdk11 $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(UPSTREAM_VERSION) .
+	docker build --rm --force-rm -t odavid/jenkins-jnlp-slave:jdk11 $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(UPSTREAM_VERSION)-jdk11 .
 
 publish: build-all
 	./publish.sh
