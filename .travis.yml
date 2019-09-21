@@ -11,18 +11,19 @@ addons:
 
 jobs:
   include:
-    - script: make build-alpine
-    - script: make build-debian
+    - script: travis_retry make build-alpine
+    - script: travis_retry make build-debian
+    - script: travis_retry make build-jdk11
     - stage: publish
       script: echo "publishing...."
       deploy:
         - provider: script
-          script: make publish
+          script: travis_retry make publish
           on:
             branch: master
 
         - provider: script
-          script: make publish
+          script: travis_retry make publish
           on:
             tags: true
             condition: $TRAVIS_TAG =~ ^v.*$
