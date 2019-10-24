@@ -1,5 +1,9 @@
 ## Changelog
 
+### v3.35-5-19 (Not released yet)
+* [alpine-pkg-glibc 2.30-r0](https://github.com/sgerrand/alpine-pkg-glibc/releases/tag/2.30-r0)
+* Upstream version [docker-jnlp-slave 3.35-5](https://github.com/jenkinsci/docker-jnlp-slave/releases/tag/3.35-5)
+
 ### v3.35-4-18
 * Upstream version and added jdk11 distribution [#11](https://github.com/odavid/jenkins-jnlp-slave/pull/11)
   * In *v3.35-4-17*, jdk11 was actually equal to the jdk8 debian distribution
