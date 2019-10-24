@@ -1,6 +1,6 @@
 ## Changelog
 
-### v3.35-5-19 (Not released yet)
+### v3.35-5-19
 * [alpine-pkg-glibc 2.30-r0](https://github.com/sgerrand/alpine-pkg-glibc/releases/tag/2.30-r0)
 * Upstream version [docker-jnlp-slave 3.35-5](https://github.com/jenkinsci/docker-jnlp-slave/releases/tag/3.35-5)
 
