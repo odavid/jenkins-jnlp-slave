@@ -1,4 +1,4 @@
-ARG FROM_TAG=3.40-1-alpine
+ARG FROM_TAG=4.0.1-1-alpine
 
 FROM jenkins/jnlp-slave:${FROM_TAG}
 
