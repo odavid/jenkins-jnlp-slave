@@ -1,6 +1,6 @@
-ARG FROM_TAG=4.3-1-alpine
+ARG FROM_TAG=4.3-4-alpine
 
-FROM jenkins/jnlp-slave:${FROM_TAG}
+FROM jenkins/inbound-agent:${FROM_TAG}
 
 ARG GOSU_VERSION=1.11
 ARG DOCKER_CHANNEL=stable
