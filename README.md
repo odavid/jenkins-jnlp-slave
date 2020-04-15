@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/odavid/jenkins-jnlp-slave.svg?branch=master)](https://travis-ci.org/odavid/jenkins-jnlp-slave)
 [![Docker Pulls](https://img.shields.io/docker/pulls/odavid/jenkins-jnlp-slave.svg)](https://hub.docker.com/r/odavid/jenkins-jnlp-slave/)
 
-This image is based on https://github.com/jenkinsci/docker-jnlp-slave image and fixes permissions issues with volumes created by docker.
+This image is based on https://github.com/jenkinsci/docker-inbound-agent image and fixes permissions issues with volumes created by docker.
 The image also contains docker binary and able to mount /var/run/docker.sock to enable the slave to run docker commands on the slave.
 The default tag of the image is based on alpine and installs also glibc to enable Oracle JDK installations. (see https://github.com/gliderlabs/docker-alpine/issues/11)
 
@@ -24,14 +24,14 @@ The immage support running docker commands in slave in 2 different modes:
 -----|------------
 `DIND` | If `true`, then the slave will run *docker inside docker* - Requires `privileged` container
 
-For other environment variables, see https://github.com/jenkinsci/docker-jnlp-slave
+For other environment variables, see https://github.com/jenkinsci/docker-inbound-agent
 
 ## Releases
 Docker Images are pushed to [Docker Hub](https://hub.docker.com/r/odavid/jenkins-jnlp-slave/)
 
 Each release is a git tag v$UPSTREAM_VERSION-$INCREMENT where:
 
-* UPSRTEAM_VERSION is the [docker-jnlp-slave](https://github.com/jenkinsci/docker-jnlp-slave) version
+* UPSRTEAM_VERSION is the [docker-inbound-agent](https://github.com/jenkinsci/docker-inbound-agent) version
 * INCREMENT is a number representing that representing the release contents (i.e docker version, bugs, etc...)
 
 For each git tag, there following tags will be created:
