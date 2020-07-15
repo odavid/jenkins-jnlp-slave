@@ -1,5 +1,8 @@
 ## Changelog
 
+### v4.3-5-25 (Not released yet)
+* Upstream version [docker-jnlp-slave 4.3-5](https://github.com/jenkinsci/docker-jnlp-slave/releases/tag/4.3-5)
+
 ### v4.3-4-24
 * Upstream version [docker-jnlp-slave 4.3-4](https://github.com/jenkinsci/docker-jnlp-slave/releases/tag/4.3-4)
 * Upstream image name changed to [jenkins/inbound-agent](https://hub.docker.com/r/jenkins/inbound-agent)
