@@ -1,5 +1,8 @@
 ## Changelog
 
+### v4.3-6-26 (Not released yet)
+* Upstream version [docker-jnlp-slave 4.3-6](https://github.com/jenkinsci/docker-jnlp-slave/releases/tag/4.3-6)
+
 ### v4.3-5-25 (Not released yet)
 * Upstream version [docker-jnlp-slave 4.3-5](https://github.com/jenkinsci/docker-jnlp-slave/releases/tag/4.3-5)
 
