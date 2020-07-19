@@ -1,4 +1,4 @@
-ARG FROM_TAG=4.3-6-alpine
+ARG FROM_TAG=4.3-7-alpine
 
 FROM jenkins/inbound-agent:${FROM_TAG}
 
