@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/odavid/jenkins-jnlp-slave.svg?branch=master)](https://travis-ci.org/odavid/jenkins-jnlp-slave)
 [![Docker Pulls](https://img.shields.io/docker/pulls/odavid/jenkins-jnlp-slave.svg)](https://hub.docker.com/r/odavid/jenkins-jnlp-slave/)
+[![Changelog](https://img.shields.io/github/v/tag/odavid/jenkins-jnlp-slave?label=changelog)](https://github.com/odavid/jenkins-jnlp-slave/blob/master/CHANGELOG.md)
 
 This image is based on https://github.com/jenkinsci/docker-inbound-agent image and fixes permissions issues with volumes created by docker.
 The image also contains docker binary and able to mount /var/run/docker.sock to enable the slave to run docker commands on the slave.
