@@ -1,4 +1,4 @@
-ARG FROM_TAG=4.3-8-alpine
+ARG FROM_TAG=4.3-9-alpine
 
 FROM jenkins/inbound-agent:${FROM_TAG}
 
@@ -7,72 +7,12 @@ ARG DOCKER_CHANNEL=stable
 ARG DOCKER_VERSION=19.03.5
 ARG TINY_VERSION=0.18.0
 
-##########################################
-# Alpine GLIBC ONLY
-ARG ALPINE_GLIBC_PACKAGE_VERSION=2.29-r0
-ARG GCC_LIBS=gcc-libs-8.3.0-1-x86_64.pkg.tar.xz
-ARG GCC_LIBS_URL=https://archive.archlinux.org/packages/g/gcc-libs/${GCC_LIBS}
-ARG ZLIB_URL_ENCODED="zlib-1%3A1.2.11-3-x86_64.pkg.tar.xz"
-ARG ZLIB="zlib-1:1.2.11-3-x86_64.pkg.tar.xz"
-ARG ZLIB_URL=https://archive.archlinux.org/packages/z/zlib/${ZLIB_URL_ENCODED}
-ARG ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download"
-##########################################
-
 USER root
 
 RUN \
     # alpine only glibc
     if [ -f /etc/alpine-release ] ; then \
-        cd /tmp \
-        \
-        && ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk" \
-        && ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk" \
-        && ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk" \
-        && apk add --no-cache --virtual=.build-dependencies wget curl ca-certificates binutils gnupg \
-        && echo \
-            "-----BEGIN PUBLIC KEY-----\
-            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApZ2u1KJKUu/fW4A25y9m\
-            y70AGEa/J3Wi5ibNVGNn1gT1r0VfgeWd0pUybS4UmcHdiNzxJPgoWQhV2SSW1JYu\
-            tOqKZF5QSN6X937PTUpNBjUvLtTQ1ve1fp39uf/lEXPpFpOPL88LKnDBgbh7wkCp\
-            m2KzLVGChf83MS0ShL6G9EQIAUxLm99VpgRjwqTQ/KfzGtpke1wqws4au0Ab4qPY\
-            KXvMLSPLUp7cfulWvhmZSegr5AdhNw5KNizPqCJT8ZrGvgHypXyiFvvAH5YRtSsc\
-            Zvo9GI2e2MaZyo9/lvb+LbLEJZKEQckqRj4P26gmASrZEPStwc+yqy1ShHLA0j6m\
-            1QIDAQAB\
-            -----END PUBLIC KEY-----" | sed 's/   */\n/g' > "/etc/apk/keys/sgerrand.rsa.pub" \
-        && wget -q \
-            "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-            "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-            "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
-        && apk add --no-cache \
-            "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-            "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-            "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
-        \
-        && rm "/etc/apk/keys/sgerrand.rsa.pub" \
-        \
-        && wget -q ${GCC_LIBS_URL} ${GCC_LIBS_URL}.sig \
-        && mkdir /tmp/gcc \
-        && tar -xf "${GCC_LIBS}" -C /tmp/gcc \
-        && mv /tmp/gcc/usr/lib/libgcc* /tmp/gcc/usr/lib/libstdc++* /usr/glibc-compat/lib \
-        && strip /usr/glibc-compat/lib/libgcc_s.so.* /usr/glibc-compat/lib/libstdc++.so* \
-        && mkdir /tmp/libz \
-        && wget -q "${ZLIB_URL}" "${ZLIB_URL}.sig" \
-        && tar -xf "${ZLIB}" -C /tmp/libz \
-        && mv /tmp/libz/usr/lib/libz.so* /usr/glibc-compat/lib \
-        && \
-        /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8 \
-        && echo "export LANG=en_US.UTF-8" > /etc/profile.d/locale.sh \
-        \
-        && apk del glibc-i18n \
-        \
-        && apk del .build-dependencies \
-        && rm \
-            "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
-            "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
-            "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" \
-        \
-        && rm -rf /tmp/${GLIBC_VER}.apk /tmp/gcc /tmp/${ZLIB} /tmp/libz /tmp/${GCC_LIBS} /var/cache/apk/* \
-        ; \
+        echo "Alpine" ; \
     elif [ -f /etc/debian_version ] ; then \
         echo "Debian, setting locales" \
         && apt-get update \
@@ -117,11 +57,11 @@ RUN \
     echo "Installing docker-compose" \
     ; \
     if [ -f /etc/alpine-release ] ; then \
-        apk add --no-cache python3 \
+        apk add --no-cache python3 py3-pip \
         \
         && apk add --no-cache --virtual .build-deps \
             python3-dev libffi-dev openssl-dev gcc libc-dev make \
-        && pip3 install --upgrade --no-cache-dir pip \
+        && pip3 install --upgrade --no-cache-dir pip wheel \
         && pip3 install --upgrade --no-cache-dir docker-compose \
         && apk del .build-deps \
         ; \
