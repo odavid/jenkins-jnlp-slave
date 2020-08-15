@@ -1,5 +1,9 @@
 ## Changelog
 
+### v4.3-9-29
+* Upstream version [docker-jnlp-slave 4.3-9](https://github.com/jenkinsci/docker-jnlp-slave/releases/tag/4.3-9)
+  * Upgrade upstream to 4.3-9. Removed all glibc installation - being taken care of in upstream image [#15](odavid/jenkins-jnlp-slave#15)
+
 ### v4.3-8-28
 * Upstream version [docker-jnlp-slave 4.3-8](https://github.com/jenkinsci/docker-jnlp-slave/releases/tag/4.3-8)
 
