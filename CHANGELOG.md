@@ -2,6 +2,7 @@
 
 ### v4.6-1-30 (Not released yet)
 * Upstream version [docker-inbound-agent 4.6-1](https://github.com/jenkinsci/docker-inbound-agent/releases/tag/4.6-1)
+* Docker version
 
 ### v4.3-9-29
 * Upstream version [docker-jnlp-slave 4.3-9](https://github.com/jenkinsci/docker-jnlp-slave/releases/tag/4.3-9)
