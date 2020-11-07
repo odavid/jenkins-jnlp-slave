@@ -1,6 +1,6 @@
 ## Changelog
 
-### v4.6-1-30 (Not released yet)
+### v4.6-1-30
 * Upstream version [docker-inbound-agent 4.6-1](https://github.com/jenkinsci/docker-inbound-agent/releases/tag/4.6-1)
 * Docker version
 
