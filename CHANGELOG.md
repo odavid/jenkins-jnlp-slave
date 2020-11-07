@@ -1,5 +1,8 @@
 ## Changelog
 
+### v4.6-1-30 (Not released yet)
+* Upstream version [docker-inbound-agent 4.6-1](https://github.com/jenkinsci/docker-inbound-agent/releases/tag/4.6-1)
+
 ### v4.3-9-29
 * Upstream version [docker-jnlp-slave 4.3-9](https://github.com/jenkinsci/docker-jnlp-slave/releases/tag/4.3-9)
   * Upgrade upstream to 4.3-9. Removed all glibc installation - being taken care of in upstream image [#15](https://github.com/odavid/jenkins-jnlp-slave/pull/15)
