@@ -56,6 +56,7 @@ RUN \
 RUN \
     echo "Installing docker-compose" \
     ; \
+    export CRYPTOGRAPHY_DONT_BUILD_RUST=1; \
     if [ -f /etc/alpine-release ] ; then \
         apk add --no-cache python3 py3-pip \
         \
@@ -71,6 +72,7 @@ RUN \
         && apt-get install -y --no-install-recommends python3 python3-pip python3-setuptools \
         \
         && apt-get install -y --no-install-recommends $buildDeps \
+        && pip3 install --upgrade --no-cache-dir pip wheel \
         && pip3 install --upgrade --no-cache-dir docker-compose \
         && apt-get purge -y --auto-remove \
                   -o APT::AutoRemove::RecommendsImportant=false \

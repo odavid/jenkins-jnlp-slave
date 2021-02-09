@@ -1,6 +1,5 @@
 # Jenkins JNLP Agent Docker image
-
-[![Build Status](https://travis-ci.com/odavid/jenkins-jnlp-slave.svg?branch=master)](https://travis-ci.com/odavid/jenkins-jnlp-slave)
+![Build Status](https://github.com/odavid/my-bloody-jenkins/workflows/main/badge.svg)
 [![Docker Pulls](https://img.shields.io/docker/pulls/odavid/jenkins-jnlp-slave.svg)](https://hub.docker.com/r/odavid/jenkins-jnlp-slave/)
 [![Changelog](https://img.shields.io/github/v/tag/odavid/jenkins-jnlp-slave?label=changelog)](https://github.com/odavid/jenkins-jnlp-slave/blob/master/CHANGELOG.md)
 
