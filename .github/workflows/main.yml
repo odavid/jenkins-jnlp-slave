@@ -21,7 +21,7 @@ jobs:
 
       - name: publish
         run: |-
-          export GIT_TAG="$(echo ${{ github.event.ref }} | sed 's|refs/tags/||g'"
+          export GIT_TAG="$(echo ${{ github.event.ref }} | sed 's|refs/tags/||g')"
           make publish
 
   publish-latest:
