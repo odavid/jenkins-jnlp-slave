@@ -1,7 +1,10 @@
 ## Changelog
 
+### 4.11.2-4-32
+* Upstream version [docker-inbound-agent 4.11.2-4](https://github.com/jenkinsci/docker-inbound-agent/releases/tag/4.11.2-4)
+
 ### 4.10-2-31
-* Upstream version [docker-inbound-agent 4.6-1](https://github.com/jenkinsci/docker-inbound-agent/releases/tag/4.10-2)
+* Upstream version [docker-inbound-agent 4.10-2](https://github.com/jenkinsci/docker-inbound-agent/releases/tag/4.10-2)
 * Docker version
 
 ### v4.6-1-30
