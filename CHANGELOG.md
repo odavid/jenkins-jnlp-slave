@@ -1,5 +1,8 @@
 ## Changelog
 
+### 4.11.2-4-33
+* Fixed wrong tiny download url - [#21](https://github.com/odavid/jenkins-jnlp-slave/pull/21)
+
 ### 4.11.2-4-32
 * Upstream version [docker-inbound-agent 4.11.2-4](https://github.com/jenkinsci/docker-inbound-agent/releases/tag/4.11.2-4)
 
