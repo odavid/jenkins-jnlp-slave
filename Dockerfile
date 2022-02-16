@@ -10,6 +10,7 @@ ARG TINY_VERSION=0.18.0
 USER root
 
 RUN \
+    set -ex; \
     # alpine only glibc
     if [ -f /etc/alpine-release ] ; then \
         echo "Alpine" ; \
@@ -27,6 +28,7 @@ ENV LANG=en_US.UTF-8
 RUN \
     echo "Installing required packages" \
     ; \
+    set -ex; \
     if [ -f /etc/alpine-release ] ; then \
         apk add --no-cache curl shadow iptables \
         ; \
@@ -39,21 +41,24 @@ RUN \
 
 
 RUN \
+    set -ex; \
     echo "Installing tiny and gosu" \
     ; \
     curl -SsLo /usr/bin/gosu https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64 \
     && chmod +x /usr/bin/gosu \
-    && curl -SsLo /usr/bin/tiny https://github.com/krallin/tini/releases/download/v${TINY_VERSION}/tini-amd64 \
+    && curl -SsLo /usr/bin/tiny https://github.com/krallin/tini/releases/download/v${TINY_VERSION}/tini-static-amd64 \
     && chmod +x /usr/bin/tiny
 
 
 RUN \
+    set -ex; \
     echo "Installing docker" \
     ; \
     curl -Ssl "https://download.docker.com/linux/static/${DOCKER_CHANNEL}/x86_64/docker-${DOCKER_VERSION}.tgz" | \
     tar -xz  --strip-components 1 --directory /usr/bin/
 
 RUN \
+    set -ex; \
     echo "Installing docker-compose" \
     ; \
     export CRYPTOGRAPHY_DONT_BUILD_RUST=1; \
