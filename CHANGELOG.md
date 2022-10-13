@@ -1,5 +1,9 @@
 ## Changelog
 
+## 3063.v26e24490f041-2-36
+* Upstream version [docker-inbound-agent 3063.v26e24490f041-2](https://github.com/jenkinsci/docker-inbound-agent/releases/tag/3063.v26e24490f041-2)
+* Increased docker version to 20.10.10 - [#27](https://github.com/odavid/jenkins-jnlp-slave/pull/27)
+
 ## 4.13.2-1-36
 * Upstream version [docker-inbound-agent 4.13.2-1](https://github.com/jenkinsci/docker-inbound-agent/releases/tag/4.13.2-1)
 
