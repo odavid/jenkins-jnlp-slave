@@ -1,5 +1,8 @@
 ## Changelog
 
+## 3071.v7e9b_0dc08466-1-39
+* Added JDK17 image - [#31](https://github.com/odavid/jenkins-jnlp-slave/pull/31)
+
 ## 3071.v7e9b_0dc08466-1-38
 * Upstream version [docker-inbound-agent 3071.v7e9b_0dc08466-1](https://github.com/jenkinsci/docker-inbound-agent/releases/tag/3071.v7e9b_0dc08466-1)
 
