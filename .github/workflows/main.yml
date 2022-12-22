@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dist: [debian, alpine, jdk11]
+        dist: [debian, alpine, jdk11, jdk17]
     steps:
       - uses: actions/checkout@v2
 

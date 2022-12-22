@@ -42,3 +42,4 @@ The following distributions are supported:
 * alpine (also the default)
 * debian
 * jdk11
+* jdk17
